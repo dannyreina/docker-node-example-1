@@ -23,7 +23,11 @@ app.use(express.static('public'));
 
 seed();
 
-app.get('/sauces', async (req, res) => {
+app.get('/', (_req,res) => 
+        res.send('<h2>Navigate to /sauces to see more!</h2>')
+}
+
+app.get('/sauces', async (_req, res) => {
     const sauces= await Sauce.findAll()
     res.render('sauces', {sauces}); //points to sauces handlebar
 })
